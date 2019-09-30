@@ -1,0 +1,55 @@
+<div class="container">
+        
+        <h1>Leave a review for this restaurant:</h1>
+        
+    {{newreview | json}}
+        <form class="form">  
+            <p>Your Name:</p>
+            <span style='color:red' *ngIf="!yourname.valid">Who do you think you are?</span><br>
+            <input class="input" [(ngModel)]="newreview.yourname" name="yourname" #yourname="ngModel" required minlength="3" >
+            <p>Stars:</p>
+
+            <select class="input" name="stars"[(ngModel)]="newreview.stars" #stars="ngModel">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select>
+            <br>
+            <p>Your Review:</p>
+            <span style='color:red' *ngIf="!comment.valid">Get your internet bravado on, speak your mind</span><br>
+            <input class="input" name="comment"[(ngModel)]="newreview.comment" #comment="ngModel" required minlength="3">
+            <br>
+            <button *ngIf="yourname.valid && comment.valid" id="btn"  (click)="addReviewfend(newreview)">Add Review!</button>
+            <button id="home" [routerLink]="['/home']">Cancel</button>
+          </form>
+    </div>
+   
+<style>
+.container{
+    text-align: center;
+}
+.input{
+    outline: 2px solid black;
+    text-align: center;
+}
+#btn{
+    outline: 2px solid black;
+    margin: 20px;
+    background-color: green;
+    color:white;
+    text-align: center;
+    width: 100px;
+    height: 75px;
+}
+#home{
+    background-color: red;
+    color: white;
+    outline: 2px solid black;
+    width: 100px;
+    height: 75px;
+    text-align: center;
+    margin: 20px;
+}
+</style>

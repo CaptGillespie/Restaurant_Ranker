@@ -1,0 +1,118 @@
+<div class="container">
+    <div class="info">
+        <h1>More About This Restaurant:</h1>
+        <h3><span class="title">Restaurant Name:</span></h3><h4>{{selectedRestaurant.name}}</h4><br>
+        <h3><span class="title">Restaurant Type:</span></h3><h4>{{selectedRestaurant.type}}</h4><br>
+        <h3><span class="title">Description:</span></h3><h4>{{selectedRestaurant.description}}</h4><br>
+        <!-- <button id="like" (click)="voteRestaurant(selectedRestaurant)">Vote For!</button> | <button id="dislike" (click)="voteAgainstRestaurant(selectedRestaurant)">Vote Against!</button> |  -->
+        <button id="review" [routerLink]="['/review', selectedRestaurant._id]">Leave Review</button> | <button id="home" [routerLink]="['/home']">Home</button><br>
+        <h3>Reviews:</h3>
+        <div>
+            <table class="reviewTable">
+                <th>Reviewer</th>
+                <th>No of Stars</th>
+                <th>Comment</th>
+                <th>Actions</th>
+                <tr *ngFor="let rev of selectedRestaurant.reviews">
+                    <td>{{ rev.yourname}} </td>
+                    <td>{{ rev.stars}} </td>
+                    <td>{{ rev.comment}} </td>
+                    <td><button (click)="deleteOneReview(rev._id)" id="delete">Delete</button> 
+                    </td>
+                </tr>
+            </table>
+            
+        </div>
+        
+        
+        </div>
+    </div>
+    <style>
+    h1{
+        margin: -10px;
+    }
+    .info{
+        background-color: rgb(7, 105, 185);
+        width: 760px;
+        text-align: center;
+        margin-left: 25%;
+    }
+    h4{
+        display: inline-block;
+        margin-top: -10px;
+    }
+    h3{
+        display: inline-block;
+        margin-top: -10px;
+    }
+    .title{
+        color: lightblue;
+        text-shadow: -1px -1px 0 rgb(255, 255, 255), 1px -1px 0 rgb(255, 255, 255), -1px 1px 0 rgb(255, 255, 255), 1px 1px 0 rgb(255, 255, 255);
+        letter-spacing: 3px;
+    }
+    #like{
+        background-color: blue;
+        color: white;
+        outline: 2px solid black;
+        width: 100px;
+        height: 75px;
+        text-align: center;
+        margin: 20px;
+        font-size: 20px;
+    }
+    #dislike{
+        background-color: purple;
+        color: white;
+        outline: 2px solid black;
+        width: 100px;
+        height: 75px;
+        text-align: center;
+        margin: 20px;
+        font-size: 20px;
+    }
+    #delete{
+        background-color: orange;
+        color: white;
+        outline: 2px solid black;
+        width: 80px;
+        height: 45px;
+        text-align: center;
+        margin: 20px;
+        font-size: 20px;
+    }
+    .reviewTable{
+        text-align: middle;
+    }
+    .container{
+        background-image: url("https://miro.medium.com/max/3996/1*F3FqMqt4ztx48-ArvHmtcg.png");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position-x: 50%;
+        color: white;
+        font-size: 25px;
+        text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+        text-align: center;
+        margin: -40px;
+    }
+    #home{
+        background-color: red;
+        color: white;
+        outline: 2px solid black;
+        width: 100px;
+        height: 75px;
+        text-align: center;
+        margin: 20px;
+        font-size: 20px;
+    }
+    #review{
+        background-color: yellow;
+        color: black;
+        outline: 2px solid black;
+        width: 100px;
+        height: 75px;
+        text-align: center;
+        margin: 20px;
+        font-size: 20px;
+        display: top;
+    }
+    </style>

@@ -1,0 +1,55 @@
+<h1>Create Page</h1>
+<div class="container">
+
+    <p *ngIf = "err" style="color:red">The name is already taken!</p>
+       
+        <form class="form">  
+                <p>Restaurant's Name:</p>
+                <span style='color:red' *ngIf="!name.valid">Who are they?</span><br>
+                <input class="input" name="name"[(ngModel)]="newRestaurant.name" #name="ngModel" required minlength="3">
+                <p>Restaurant's Type:</p>
+                <span style='color:red' *ngIf="!type.valid">Type of food???</span><br>
+                <input class="input" name="type"[(ngModel)]="newRestaurant.type" #type="ngModel" required minlength="3">
+                <br>
+                <p>Restaurant's Description:</p>
+                <span style='color:red' *ngIf="!description.valid">Tell us about them?</span><br>
+                <input class="input" name="description"[(ngModel)]="newRestaurant.description" #description="ngModel" required minlength="3">
+                <br>
+                <input *ngIf="name.valid && description.valid" id="btn" type="submit" (click)="makeNewRestaurants()" value="Add Restaurant!"><button id="cancel" [routerLink]="['/home']">Cancel</button>
+            </form>
+            
+
+
+
+
+</div>
+    
+<style>
+.container{
+    text-align: center;
+    
+}
+.input{
+    border: 2px solid black;
+}
+#btn{
+height: 100px;
+width: 150px;
+background-color: green;
+color: white;
+border: 2px solid black;
+font-size: 25px;
+text-align: center;
+}
+#cancel{
+    height: 100px;
+    width: 150px;
+    background-color: red;
+    color: white;
+    border: 2px solid black;
+    margin: 20px;
+    font-size: 25px;
+    text-align: center;
+}
+
+    </style>

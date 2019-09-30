@@ -1,0 +1,74 @@
+<div class="container">
+<br>
+
+<table align="center" class="pettable">
+    <th>Votes</th>
+    <th>Name</th>
+    <th>Type</th>
+    <th>Action</th>
+    <tr *ngFor="let restaurant of allRestaurants">
+        <td><h3>{{restaurant.votes}}</h3></td>
+        <td><h3>{{restaurant.name}}</h3></td>
+        <td><h3>{{restaurant.type}}</h3></td>
+        <td><button [routerLink]="['/info', restaurant._id]" id="details">Read</button> | 
+            <button [routerLink]="['/update', restaurant._id]" id="update" >Update</button> | 
+            <button (click)="deleteOneRestaurant(restaurant._id)" id="delete">Delete</button>
+        </td>
+    </tr>
+</table>
+<button [routerLink]="['/create']" id="create">Create</button>
+
+</div>
+<style>
+  .container{
+  background-image: url("https://img1.mashed.com/img/gallery/things-you-should-never-order-in-a-fancy-restaurant/intro.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position-x: 50%;
+  color: white;
+  font-size: 25px;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+  margin: -40px;
+  }
+#create{
+  background-color: yellow;
+  color: black;
+  outline: 2px solid black;
+  margin: 5px;
+  margin-top: 50px;
+  height: 50px;
+  width: 110px;
+  font-size: 30px;
+  margin-left: 45%;
+}
+#details{
+  background-color: rgb(255, 166, 0);
+  color: white;
+  outline: 2px solid black;
+  margin: 5px;
+  margin-top: 20px;
+  height: 50px;
+  width: 110px;
+  font-size: 25px;
+}
+#update{
+  background-color: teal;
+  color: white;
+  outline: 2px solid black;
+  margin: 5px;
+  margin-top: 20px;
+  height: 50px;
+  width: 110px;
+  font-size: 30px;
+}
+#delete{
+  background-color: rgb(248, 91, 73);
+  color: black;
+  outline: 2px solid black;
+  margin: 5px;
+  margin-top: 20px;
+  height: 50px;
+  width: 110px;
+  font-size: 30px;
+}
+</style>

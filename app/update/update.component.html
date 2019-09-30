@@ -1,0 +1,59 @@
+<div class="container">
+        <h1>Update This Restaurant:</h1>
+        <!-- {{ thepet | json }} -->
+        <form class="form">  
+            <h4>Restaurant's Name:</h4>
+            <span style='color:red' *ngIf="!name.valid">What do we call them?</span><br>
+            <input class="input" [(ngModel)]="therestaurant.name" name="therestaurant.name" #name="ngModel" required minlength="3" >
+            <h4>Restaurant's Type:</h4>
+            <span style='color:red' *ngIf="!type.valid">Fast, slow, or homecooked?</span><br>
+            <input class="input" name="therestaurant.type"[(ngModel)]="therestaurant.type" #type="ngModel" required minlength="3">
+            <br>
+            <h4>Restaurant's Description:</h4>
+            <span style='color:red' *ngIf="!description.valid">Could you describe them?</span><br>
+            <input class="input" name="therestaurant.description"[(ngModel)]="therestaurant.description" #description="ngModel" required minlength="3">
+            <br>
+            <input *ngIf="name.valid && description.valid && type.valid" id="btn"  (click)="updateARestaurant(therestaurant)" value="Update!">
+            <button id="home" [routerLink]="['/home']">Home</button>
+          </form>
+    </div>
+    
+    
+    <style>
+       .container{
+        background-image: url("https://amp.businessinsider.com/images/526025ea6bb3f7985baaec45-750-375.jpg");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position-x: 50%;
+        color: white;
+        font-size: 25px;
+        text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+        text-align: center;
+        margin: -40px;
+    }
+    .input{
+      outline: 2px solid black;
+      text-align: center;
+    }
+    #home{
+        background-color: red;
+        color: white;
+        outline: 2px solid black;
+        width: 100px;
+        height: 75px;
+        text-align: center;
+        margin: 20px;
+        font-size: 20px;
+    }
+    #btn{
+        background-color: yellow;
+        color: black;
+        outline: 2px solid black;
+        width: 100px;
+        height: 75px;
+        text-align: center;
+        margin: 20px;
+        font-size: 20px;
+        display: top;
+    }
+    </style>
